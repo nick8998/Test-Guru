@@ -1,18 +1,17 @@
-
-Question.create!(wording: "What do mammals eat?", sublevel: 0)
-
-User.create!(mail: "admin@email.com", password: "qwerty123", role: 1) 
-
 categories = Category.create!([
 {title: "Biology"},
 {title: "Physics"}])
 
 tests = Test.create!([
-{title: "Mammals"},
-{title: "Dynamics", level: 3}])
- 
+{title: "Mammals", category_id: categories[0].id},
+{title: "Dynamics", level: 3, category_id: categories[1].id}])
+
+questions = Question.create!(wording: "What do mammals eat?", sublevel: 0, test_id: tests[0].id)
+
+User.create!(mail: "admin@email.com", password: "qwerty123", role: 1) 
+
 answers = Answer.create!([
-{wording: "Meat", correct: true},
-{wording: "Balls", correct: false},
-{wording: "Grass", correct: false},
-{wording: "Ground", correct: false}])
+{wording: "Meat", correct: true, question_id: questions.id},
+{wording: "Balls", correct: false, question_id: questions.id},
+{wording: "Grass", correct: false, question_id: questions.id},
+{wording: "Ground", correct: false, question_id: questions.id}])

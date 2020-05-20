@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   def find_tests_by_lvl(level)
-    tests = Test.where(level: level)
-    Result.where(self.class.id: tests.id)
+    Test.joins("INNER JOIN results ON tests.id = results.tests_id").where(tests: { level: level }).where('? = results.users_id', self.select(:id))
   end
 end
