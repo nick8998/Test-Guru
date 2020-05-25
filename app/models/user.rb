@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  has_many :results
-  has_many :tests, through: :results
-  has_many :tests
+  has_many :results, dependent: :destroy
+  has_many :tests, through: :results, dependent: :destroy
+  has_many :authored_tests, foreign_key: "author_id", class_name: "Test", dependent: :destroy
   
   def find_tests_by_lvl(level)
-    Test.joins("INNER JOIN results ON tests.id = results.tests_id").where(tests: { level: level }, results: { users_id: id})
+    Results.joins(:users, :tests).where(tests: { level: level })
   end
 end

@@ -1,11 +1,11 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
-  has_many :results
-  has_many :users, through: :results
-  belongs_to :user, -> { where "role = 1" }
+  has_many :questions, dependent: :destroy
+  has_many :results, dependent: :destroy
+  has_many :users, through: :results, dependent: :destroy
+  belongs_to :author, class_name: "User", optional: true
   
   def self.show_tests_by_category(category)
-    joins("INNER JOIN categories ON tests.category_id = categories.id").where(categories: { title: category }).order(id: :desc).pluck(:title)
+    Category.joins(:tests).where(categories: { title: category }).order(id: :desc).pluck('tests.title')
   end
 end
