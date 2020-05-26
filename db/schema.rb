@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_094805) do
+ActiveRecord::Schema.define(version: 2020_05_26_131441) do
 
   create_table "answers", force: :cascade do |t|
     t.string "wording", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_094805) do
     t.integer "sublevel"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "test_id", null: false
+    t.integer "test_id"
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_094805) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "test_id", null: false
+    t.integer "progress", default: 0
     t.index ["test_id"], name: "index_results_on_test_id"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
@@ -50,7 +51,9 @@ ActiveRecord::Schema.define(version: 2020_05_20_094805) do
     t.integer "level", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id", null: false
+    t.integer "category_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
   end
 
@@ -70,4 +73,5 @@ ActiveRecord::Schema.define(version: 2020_05_20_094805) do
   add_foreign_key "results", "tests"
   add_foreign_key "results", "users"
   add_foreign_key "tests", "categories"
+  add_foreign_key "tests", "users", column: "author_id"
 end
