@@ -1,0 +1,18 @@
+<h1>Create New Question to <%= params[:test_id] %> test</h1>
+
+<form action="/tests/<%= params[:test_id] %>/questions" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="question[test_id]" value="<%= params[:test_id] %>">
+
+  <p>
+    <label for="question-wording">Wording:</label>
+    <input type="text" name="question[wording]" id="question-wording">
+  </p><br>
+
+  <p>
+    <label for="question-sublevel">Sublevel:</label>
+    <input type="text" name="question[sublevel]" id="question-sublevel">
+  </p><br>
+
+  <input type="submit" name="Create">
+</form>
