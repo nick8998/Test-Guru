@@ -9,7 +9,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render json: { questions: Question.find(params[:id])}
+    @question = Question.find(params[:id])
+    render json: { questions: @question}
   end
 
   def new
@@ -22,14 +23,14 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.destroy_by(id: params[:id])
+    @question.destroy
     render plain: "Question deleted"
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:wording, :sublevel, :test_id)
+    params.require(:question).permit(:wording, :sublevel)
   end
 
   def find_test
