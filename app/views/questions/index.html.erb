@@ -1,0 +1,15 @@
+<h1>Tricky Questions</h1>
+
+<table>
+  <tr>
+    <th>Wording</th>
+    <th>Sublevel</th>
+  </tr>
+
+  <% @questions.each do |question| %>
+    <tr>
+      <td> <%= question.wording %> </td>
+      <td> <%= question.sublevel %> </td>
+    </tr>
+  <% end %>
+</table>
