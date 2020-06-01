@@ -6,6 +6,7 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @questions = Question.where(id: @test.id)
   end
 
   def new
@@ -34,6 +35,13 @@ class TestsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @test = Test.find(params[:id])
+
+    @test.destroy
+    redirect_to tests_path
   end
 
   private

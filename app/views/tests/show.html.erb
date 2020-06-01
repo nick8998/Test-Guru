@@ -7,3 +7,15 @@
   <strong>Level:</strong>
   <%= @test.level %>
 </p>
+
+<p>
+  <strong>Questions:</strong>
+  <ol>
+    <% @questions.each do |question| %>
+      <li> <%= question.wording %></li>
+    <% end %>
+  </ol>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>
