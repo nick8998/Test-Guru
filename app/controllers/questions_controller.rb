@@ -5,32 +5,55 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    render json: { questions: Question.where(test_id: @test.id)}
+    @questions = Question.where(test_id: @test.id)
   end
 
   def show
     @question = Question.find(params[:id])
-    render json: { questions: @question}
   end
 
   def new
-    
+    @test = Test.find(params[:test_id])
+    @question = Question.new
   end 
 
   def create
-    question = Question.create!(question_params)
-    render plain: question.inspect
+    @test = Test.find(params[:test_id])
+    @question = Question.new(question_params)
+
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+    @test = Test.find(@question.test_id)
+  end
+
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def destroy
+    @question = Question.find(params[:id])
+
     @question.destroy
-    render plain: "Question deleted"
+    redirect_to questions_path
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:wording, :sublevel)
+    params.require(:question).permit(:wording, :sublevel, :test_id)
   end
 
   def find_test

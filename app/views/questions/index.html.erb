@@ -1,15 +1,15 @@
 <h1>Tricky Questions</h1>
 
+<p>
+  <%= link_to 'New question', new_test_question_path %>
+</p>
+
 <table>
   <tr>
     <th>Wording</th>
     <th>Sublevel</th>
+    <th colspan="3">Action</th>
   </tr>
 
-  <% @questions.each do |question| %>
-    <tr>
-      <td> <%= question.wording %> </td>
-      <td> <%= question.sublevel %> </td>
-    </tr>
-  <% end %>
+  <%= render @questions %>
 </table>

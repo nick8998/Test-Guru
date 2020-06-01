@@ -1,0 +1,13 @@
+<p>
+  <strong>Wording:</strong>
+  <%= @question.wording %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @question.sublevel %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', tests_path %>

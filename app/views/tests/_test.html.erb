@@ -9,4 +9,5 @@
                 method: :delete,
                 data: { confirm: "Are you sure?"} %>
   </td>
+  <td><%= Question.where(test_id: test.id).count%></td>
 </tr>

@@ -6,7 +6,7 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
-    @questions = Question.where(id: @test.id)
+    @questions = Question.where(test_id: @test.id)
   end
 
   def new
