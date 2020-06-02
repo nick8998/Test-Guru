@@ -6,16 +6,14 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
 
-  def show
-
-  end
+  def show; end
 
   def new
     @question = Question.new
   end 
 
   def create
-    @question = Question.new(question_params)
+    @question = @test.questions.new(question_params)
     @question.test_id = params[:test_id]
     if @question.save
       redirect_to @question
@@ -24,9 +22,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def edit
-    @test_find = Test.find(@question.test_id)
-  end
+  def edit; end
 
   def update
     if @question.update(question_params)
@@ -38,7 +34,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to tests_path
+    redirect_to test_path(@question.test_id)
   end
 
   private
