@@ -7,16 +7,17 @@
   <strong>Level:</strong>
   <%= @test.level %>
 </p>
-
 <p>
-  <strong>Questions:</strong>
-  <ol>
-    <% @questions.each do |question| %>
-      <li> <%= question.wording %> <%= link_to 'Show', question_path(question) %></li>
-    <% end %>
-  </ol>
-</p>
+<%= link_to 'New question', new_test_question_path(params[:id])%> 
+</p><br>
+<table>
+  <tr>
+    <th>Wording</th>
+    <th>Sublevel</th>
+    <th colspan="3">Action</th>
+  </tr>
+  <%= render @questions %>
+</table><br>
 
 <%= link_to 'Edit', edit_test_path(@test) %> |
-<%= link_to 'Back', tests_path %> |
-<%= link_to 'Show questions', test_questions_path(@test, @questions) %>
+<%= link_to 'Back', tests_path %> 

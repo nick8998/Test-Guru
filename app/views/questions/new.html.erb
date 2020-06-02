@@ -1,23 +1,4 @@
-<h1><%= question_header(@test, "new")%></h1>
+<h1><%= question_header(@question, @test)%></h1>
 
-<%= form_with model: [@test, @question], local: true do |form| %>
-  <%= render 'shared/errors', resourse: @question %>
-  <p>
-  <%= form.label :wording %><br>
-  <%= form.text_field :wording%>
-</p><br>
-
-<p>
-  <%= form.label :sublevel %><br>
-  <%= form.number_field :sublevel%>
-</p>
-
- <p>
-  <%= form.label :test_id %>
-  <%= form.collection_select :test_id, Test.all, :id, :title, promt: true %>
-</p>
-
-<p><%= form.submit %></p>
-<% end %>
-
+<%= render 'form' %>
 <%= link_to 'Back', tests_path %>
