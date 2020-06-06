@@ -1,7 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
 
-  scope :right, -> { where(correct: true) }
+  scope :correct, -> { where(correct: true) }
 
   validates :wording, presence: true
   validate :validate_new_answer
