@@ -12,7 +12,10 @@
   <body>
     <% if logged_in? %>
       <p class="nav user">Welcome, <b><%= current_user.nickname %></b> <a href="/"> Guru</a></p>
-      <p class="nav user"><a href="logout">Exit</a></p>
+      <p class="nav user"><%= link_to 'Exit',
+                logout_path,
+                method: :delete,
+                data: { confirm: "Are you sure?"}%></p>
     <% end %>
     
     <%= yield %>
