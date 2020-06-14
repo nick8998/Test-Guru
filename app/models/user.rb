@@ -1,16 +1,17 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
+
 
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages, dependent: :destroy
   has_many :authored_tests, foreign_key: "author_id", class_name: "Test", dependent: :destroy
 
-  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
-    message: "invalid format" }
-  validates :email, uniqueness: true
-
-  has_secure_password
+  devise :database_authenticatable, 
+        :registerable,
+        :recoverable,
+        :trackable, 
+        :rememberable, 
+        :validatable,
+        :confirmable
 
   def find_tests_by_lvl(level)
     tests.where(level: level)

@@ -10,15 +10,14 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p class="nav user">Welcome, <b><%= current_user.nickname %></b> <a href="/"> Guru</a></p>
-      <p class="nav user"><%= link_to 'Exit',
-                logout_path,
-                method: :delete,
-                data: { confirm: "Are you sure?"}%></p>
-    <% end %>
-    
+    <% if user_signed_in? %>
+      <p class="nav user">
+        Welcome, <b><%= current_user.email %></b> <a href="/"> Guru | <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      </p>
+    <%end%>
+    <%= render "shared/flash" %>
     <%= yield %>
     <%= render "shared/footer" %>
   </body>
 </html>
+<%console%>
