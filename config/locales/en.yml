@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+
+  test_passages:
+    gist:
+      success: 'Gist was successfuly!'
+      link: https://localhost:3000
+      failure: "An error occured while saving gist"
