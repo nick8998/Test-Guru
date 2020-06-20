@@ -20,8 +20,17 @@ class TestPassagesController < ApplicationController
   
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
+    link_to_gist = result.html_url
+    
+    gist_params = { 
+      question: @test_passage.current_question,
+      gist_url: result.html_url
+    }
+
+    current_user.gists.create(gist_params)
+
     flash_options = if result.success?
-      { notice: t("Successfully created #{view_context.link_to('product', @test_passage)}.").html_safe }
+      { notice: t('.success', href: "#{view_context.link_to("Your gist", link_to_gist)}") }
     else
       { alert: t('.failure') }
     end
@@ -34,5 +43,6 @@ class TestPassagesController < ApplicationController
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
   end
+
 
 end

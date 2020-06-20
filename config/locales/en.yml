@@ -34,6 +34,6 @@ en:
 
   test_passages:
     gist:
-      success: 'Gist was successfuly!'
-      link: https://localhost:3000
+      success: 'Gist was successfuly!  %{href}'
       failure: "An error occured while saving gist"
+  description: "A question about %{test} from TestGuru"
