@@ -8,8 +8,6 @@ tests = Test.create!([
 
 questions = Question.create!(wording: "What do mammals eat?", sublevel: 0, test_id: tests[0].id)
 
-User.create!(mail: "admin@email.com", password: "qwerty123", role: 1) 
-
 answers = Answer.create!([
 {wording: "Meat", correct: true, question_id: questions.id},
 {wording: "Balls", correct: false, question_id: questions.id},

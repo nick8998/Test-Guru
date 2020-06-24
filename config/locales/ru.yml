@@ -1,0 +1,9 @@
+ru: 
+  hello: "Привет, мир!"
+
+  test_passages:
+    gist:
+      success: "Gist был успешно создан %{href}"
+      failure: "Была обнаружена ошибка при сохранении в gist"
+      u_gist: "Ваш гист"
+  description: "Вопрос по теме %{test} из TestGuru"

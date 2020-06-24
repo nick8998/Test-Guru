@@ -30,6 +30,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise', '~> 4.0'
 
+gem 'faraday'
+
+gem 'octokit', "~> 4.0"
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

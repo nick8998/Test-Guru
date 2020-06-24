@@ -1,0 +1,5 @@
+<tr>
+  <td> <%= gist.user.email %></td>
+  <td> <%= link_to "#{gist.question.wording.truncate(25)}", admin_question_path(gist.question) %></td>
+  <td><%= link_to "#{gist.gist_url}","https://gist.github.com/nick8998/#{gist.gist_url}" , target: "_blank"%></td>
+</tr>
