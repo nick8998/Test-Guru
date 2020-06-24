@@ -28,7 +28,7 @@ class TestPassagesController < ApplicationController
       gist_url: result.id
     }
 
-    if service.success?(result)
+    if service.success?
       current_user.gists.create(gist_params)
       flash[:notice] = t('.success', href: "#{view_context.link_to(t('.u_gist'), link_to_gist)}")
     else
