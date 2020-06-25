@@ -34,6 +34,8 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <p class="confirm_alert hide">Password mismatch</p>
+    <p class="confirm_notice hide">Password match</p>
   </div>
 
   <div class="actions">
