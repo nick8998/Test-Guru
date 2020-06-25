@@ -1,0 +1,21 @@
+.pointer {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.confirm_alert {
+  border: 2px solid;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: #ef2727;
+}
+
+.confirm_notice {
+  border: 2px solid;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: green;
+}
