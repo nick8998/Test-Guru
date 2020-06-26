@@ -1,0 +1,5 @@
+<%= content_tag :div, class: "progress" do %>
+  <%= content_tag :div, class: "progress-bar", role: "progressbar", aria_valuemin: "0", aria_valuemax: "100", style: "width: #{ progress}%" do %>
+  <%= "#{progress}%" %>
+  <%end%>
+<%end%>

@@ -17,7 +17,7 @@ class TestPassagesController < ApplicationController
       render :show
     end
   end
-  
+
   def gist
     service = GistQuestionService.new(@test_passage.current_question)
     result = service.call

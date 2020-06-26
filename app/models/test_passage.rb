@@ -26,6 +26,10 @@ class TestPassage < ApplicationRecord
     self.test.questions.pluck(:id).index(self.current_question.id) + 1
   end
 
+  def progress
+    (self.question_number * 100) / self.test.questions.count
+  end
+
   def successful?
     self.correct_questions/self.test.questions.count*100 >= 85
   end
