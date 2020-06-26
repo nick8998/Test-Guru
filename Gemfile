@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise', '~> 4.0'
 
+gem 'jquery-rails'
 gem 'faraday'
 
 gem 'octokit', "~> 4.0"

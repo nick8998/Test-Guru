@@ -38,3 +38,8 @@ en:
       failure: "An error occured while saving gist"
       u_gist: "Your gist"
   description: "A question about %{test} from TestGuru"
+
+  admin:
+    tests:
+      form_inline:
+        submit: "Ok"
