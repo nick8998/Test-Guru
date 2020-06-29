@@ -1,0 +1,30 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resourse: @badge %>
+  <p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title%>
+</p><br>
+
+<p>
+  <%= form.label :picture %><br>
+  <%= form.text_field :picture%>
+</p>
+
+<p>
+  <%= form.label :all_tests %><br>
+  <%= form.check_box :all_tests  %>
+</p>
+
+<p>
+  <%= form.label :test_by_one %><br>
+  <%= form.check_box :test_by_one  %>
+</p>
+
+<p>
+  <%= form.label :test_by_lvl %><br>
+  <%= form.check_box :test_by_lvl  %>
+</p>
+
+
+<p><%= form.submit %></p>
+<% end %>

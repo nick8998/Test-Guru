@@ -1,0 +1,17 @@
+<h1>Tricky Badges</h1>
+
+<table class="table">
+  <tr>
+    <th class="sort-by-title pointer">
+    Title
+    <%= octicon 'arrow-up', class: 'text-success hide'%>
+    <%= octicon 'arrow-down', class: 'text-success hide'%>
+    </th>
+    <th>Picture</th>
+  </tr>
+
+  <%= render @badges %>
+
+<%= link_to 'Show All Badges', badges_path %> |
+<%= link_to 'Back', root_path %> 
+</table>
