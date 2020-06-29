@@ -11,7 +11,7 @@
     </p>
   <%end%>
 
-  <p>Number of question: <%= @test_passage.question_number %> from <%= @test_passage.test.questions.count %></p>
+  <%= render 'progressbar', progress: @test_passage.progress %>
 
   <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>
   <p><%= form.submit 'Next' %></p>
