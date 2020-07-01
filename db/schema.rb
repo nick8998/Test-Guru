@@ -24,9 +24,8 @@ ActiveRecord::Schema.define(version: 2020_06_29_104618) do
   create_table "badges", force: :cascade do |t|
     t.string "title", null: false
     t.string "picture", null: false
-    t.boolean "all_tests", default: false
-    t.boolean "test_by_one", default: false
-    t.boolean "test_by_lvl", default: false
+    t.string "achievement", null: false
+    t.string "options"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

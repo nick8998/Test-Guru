@@ -10,6 +10,16 @@
   <%= image_tag("#{@badge.picture}", size: "128") %>
 </p>
 
+<p>
+  <strong>Achievement:</strong>
+  <%= @badge.achievement %>
+</p>
+
+<p>
+  <strong>Options:</strong>
+  <%= @badge.options %>
+</p>
+
 
 <%= link_to 'Edit', edit_admin_badge_path(@badge) %> |
 <%= link_to 'Back', admin_badges_path %>

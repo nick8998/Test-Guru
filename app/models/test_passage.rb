@@ -6,19 +6,6 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_current_question
 
-  def set_badge(current_user)
-    if self.successful? and current_user.tests.where(id: self.test_id).count == 1
-      badge = Badge.where(test_by_one: true)
-      current_user.badges.push(badge)
-    elsif current_user.find_test_by_lvl(self.test.level) == Test.where(level: self.test.level)
-      badge = Badge.where(test_by_lvl: true)
-      current_user.badges.push(badge)
-    elsif Test.show_tests_by_category_arr(self.test.category.title) == current_user.tests.where(category_id: self.test.category_id)
-      badge = Badge.where(all_tests: true)
-      current_user.badges.push(badge)
-    end
-  end
-
 
   def completed? 
     current_question.nil?
