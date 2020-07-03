@@ -32,7 +32,7 @@ class Admin::BadgesController < Admin::BaseController
 
   def destroy
     @badge.destroy
-    redirect_to admin_badge_path(@badge)
+    redirect_to admin_badges_path
   end
 
   private 

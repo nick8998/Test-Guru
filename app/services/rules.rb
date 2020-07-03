@@ -1,16 +1,22 @@
 class Rules < BadgesService
 
-  def initialize(test_passage, current_user)
-    super
+  def find_rule
+    badge = []
+    if OneTryRule.new(@test_passage, @current_user).check?
+      badge << set_badge("one_try", nil)
+    end
+
+    if LevelRule.new(@test_passage, @current_user).check?
+      badge << set_badge("level",@test_passage.test.level.to_s)
+    end
+
+    if CategoryTestRule.new(@test_passage, @current_user).check?
+      badge << set_badge("all_tests", "Backend")
+    end
+    return badge
   end
 
-  def find_rule
-    if OneTryRule.new(@test_passage, @current_user).check?
-      badge = OneTryRule.new(@test_passage, @current_user).set_badge
-    elsif LevelRule.new(@test_passage, @current_user).check?
-      badge = LevelRule.new(@test_passage, @current_user).set_badge
-    elsif CategoryTestRule.new(@test_passage, @current_user).check?
-      badge = CategoryTestRule.new(@test_passage, @current_user).set_badge
-    end
+  def set_badge(achievement, options)
+    Badge.where(achievement: achievement, options: options)
   end
 end

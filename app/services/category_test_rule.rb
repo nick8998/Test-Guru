@@ -1,14 +1,9 @@
-class CategoryTestRule < Rules
+class CategoryTestRule < RuleForUniq
 
   def initialize(test_passage, current_user)
     super
+    @user_tests = @current_user.tests.where(category_id: @test_passage.test.category_id).pluck(:title)
+    @tests = Test.tests_by_category(@test_passage.test.category.title)
   end
 
-  def check?
-    Test.show_tests_by_category_arr(@test_passage.test.category.title) == @current_user.tests.where(category_id: @test_passage.test.category_id)
-  end
-
-  def set_badge
-    Badge.where(achievement: "all_tests", options: "Backend")
-  end
 end

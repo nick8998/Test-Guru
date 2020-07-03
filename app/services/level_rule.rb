@@ -1,14 +1,9 @@
-class LevelRule < Rules
+class LevelRule < RuleForUniq
 
   def initialize(test_passage, current_user)
     super
+    @user_tests = @current_user.find_tests_by_lvl(@test_passage.test.level).pluck
+    @tests = Test.where(level: @test_passage.test.level).pluck
   end
 
-  def check?
-    @current_user.find_test_by_lvl(@test_passage.test.level) == Test.where(level: @test_passage.test.level)
-  end
-
-  def set_badge
-    Badge.where(achievement: "level", options: @test_passage.test.level.to_s)
-  end
 end
