@@ -1,4 +1,5 @@
 class RuleForUniq < Rules
+  
   def check?
     if @user_tests.count == @tests.count
       return @user_tests.uniq == @tests.uniq

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_104618) do
+ActiveRecord::Schema.define(version: 2020_07_05_104718) do
 
   create_table "answers", force: :cascade do |t|
     t.string "wording", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_104618) do
     t.string "options"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["achievement", "options"], name: "index_badges_on_achievement_and_options", unique: true
   end
 
   create_table "categories", force: :cascade do |t|

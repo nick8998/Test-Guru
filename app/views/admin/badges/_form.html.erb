@@ -12,7 +12,7 @@
 
 <p>
   <%= form.label :achievement %><br>
-  <%= form.collection_select :achievement, Badge.all, :achievement, :achievement, promt: true%>
+  <%= form.select :achievement, options_for_select(Rules::ALLRULES) %>
 </p>
 
 <p>
