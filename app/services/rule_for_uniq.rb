@@ -1,19 +1,25 @@
 class RuleForUniq < Rules
   
   def check?
-    if @user_tests.count == @tests.count
-      return @user_tests.uniq == @tests.uniq
-    elsif @user_tests.count > @tests.count
-      count_uniq
+    if have_badge?
+      check_test_passage 
+    else
+      @user_tests.uniq == @tests.uniq
     end
   end
 
-  def count_uniq
-    counter = 0
-    @tests.each do |test_lvl|
-      counter += @user_tests.find_all{ |elem| elem == test_lvl }.count
+  def have_badge?
+    @user_badge.present?
+  end
+
+  def check_test_passage
+    pass = []
+    last_badge_time = @user_badge.last.created_at
+    @user_tests.each  do |test|
+      if test.test_passages.last.created_at > last_badge_time
+        pass << test
+      end
     end
-    
-    return (counter % @tests.count) == 0
+    pass.uniq == @tests.uniq
   end
 end

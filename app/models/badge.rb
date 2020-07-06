@@ -4,11 +4,6 @@ class Badge < ApplicationRecord
 
   validates :title, :picture, presence: true
   validates :achievement, presence: true, uniqueness: { scope: :options } 
-  validate :validate_new_badge
+  validates :achievement, inclusion: { :in => Rules::ALLRULES }
 
-  def validate_new_badge
-    unless Rules::ALLRULES.include?(:achievement)
-      errors.add(:title, "can't be created")
-    end
-  end
 end

@@ -8,6 +8,8 @@ ru:
       u_gist: "Ваш гист"
   description: "Вопрос по теме %{test} из TestGuru"
 
-  category_test_rule: "Выполнить все тесты в категории"
-  level_rule: "Выполнить все тесты одного уровня"
-  one_try_rule: "Выполнить тест с первой попытки"
+  badges:
+    rules:
+      category_test_rule: "Выполнить все тесты в категории"
+      level_rule: "Выполнить все тесты одного уровня"
+      one_try_rule: "Выполнить тест с первой попытки"

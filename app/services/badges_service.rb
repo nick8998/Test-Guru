@@ -6,12 +6,8 @@ class BadgesService
   end
 
   def badges
-    badges = []
     Badge.select do |badge|
-      if badge.achievement.classify.constantize.new(@test_passage, @current_user).check?
-        badges << badge
-      end
+      badge.achievement.classify.constantize.new(@test_passage, @current_user).check?
     end
-    return badges
   end
 end

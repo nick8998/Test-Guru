@@ -1,6 +1,6 @@
 <tr>
   <td> <%= badge.title %></td>
   <td> <%= image_tag("#{badge.picture}", size: "64")%></td>
-  <td> <%= I18n.t("#{badge.achievement}") %></td>
+  <td> <%= I18n.t("badges.rules.#{badge.achievement}") %></td>
   <td> <%= badge.options %></td>
 </tr>
