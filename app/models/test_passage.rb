@@ -31,6 +31,7 @@ class TestPassage < ApplicationRecord
   def successful?
     self.correct_questions/self.test.questions.count*100 >= 85
   end
+  
   private
 
 
