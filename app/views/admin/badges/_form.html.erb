@@ -1,0 +1,26 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resourse: @badge %>
+  <p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title%>
+</p><br>
+
+<p>
+  <%= form.label :picture %><br>
+  <%= form.text_field :picture%>
+</p>
+
+<p>
+  <%= form.label :achievement %><br>
+  <%= form.select :achievement, options_for_select(badge_rules) %>
+</p>
+
+<p>
+  <%= form.label :options %><br>
+  <%= form.text_field :options%>
+</p>
+
+
+
+<p><%= form.submit %></p>
+<% end %>

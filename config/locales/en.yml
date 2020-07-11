@@ -43,3 +43,10 @@ en:
     tests:
       form_inline:
         submit: "Ok"
+
+  badges:
+    rules:
+      category_test_rule: "Complete all tests in category"
+      level_rule: "Complete all tests same level"
+      one_try_rule: "Complete test on the first try"
+

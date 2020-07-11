@@ -7,3 +7,9 @@ ru:
       failure: "Была обнаружена ошибка при сохранении в gist"
       u_gist: "Ваш гист"
   description: "Вопрос по теме %{test} из TestGuru"
+
+  badges:
+    rules:
+      category_test_rule: "Выполнить все тесты в категории"
+      level_rule: "Выполнить все тесты одного уровня"
+      one_try_rule: "Выполнить тест с первой попытки"

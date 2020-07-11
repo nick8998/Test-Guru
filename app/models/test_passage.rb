@@ -7,8 +7,6 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_current_question
 
 
-  
-
   def completed? 
     current_question.nil?
   end
@@ -33,6 +31,7 @@ class TestPassage < ApplicationRecord
   def successful?
     self.correct_questions/self.test.questions.count*100 >= 85
   end
+  
   private
 
 
