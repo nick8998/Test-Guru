@@ -11,6 +11,8 @@
     </p>
   <%end%>
 
+  <%= render 'timer', timer: collection_timer_tests(@test_passage) %>
+
   <%= render 'progressbar', progress: @test_passage.progress %>
 
   <p><%= link_to 'Gist Question', gist_test_passage_path(@test_passage), method: :post %></p>

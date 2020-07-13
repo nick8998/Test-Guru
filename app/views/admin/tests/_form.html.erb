@@ -14,5 +14,13 @@
     <%= form.label :category_id %>
     <%= form.collection_select :category_id, Category.all, :id, :title, promt: true %>
   </p>
+  <p>
+    <%= form.label :timer %>
+  </p>
+  <p>
+    <%= number_field(:test_timer, :hours, in: 0..59, step: 1) %> :
+    <%= number_field(:test_timer, :minutes, in: 0..59, step: 1) %> :
+    <%= number_field(:test_timer, :seconds, in: 0..59, step: 1) %>
+  </p>
   <p><%= form.submit %></p>
 <% end %>

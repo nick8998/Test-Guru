@@ -13,6 +13,8 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = current_user.tests.new(test_params)
+    @tt = TestTimer.new(timer_params)
+    @tt.test = @test
     if @test.save
       redirect_to admin_test_path(@test)
     else
@@ -47,6 +49,10 @@ class Admin::TestsController < Admin::BaseController
 
   def test_params
     params.require(:test).permit(:title, :level, :category_id)
+  end
+
+  def timer_params
+    params.require(:test_timer).permit(:hours, :minutes, :seconds)
   end
 
   def set_test
