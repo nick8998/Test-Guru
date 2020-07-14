@@ -11,8 +11,12 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def time_is_out?
+    Time.now.sec >= (self.created_at.sec + self.test.test_timer.seconds) and Time.now.min >= (self.created_at.min + self.test.test_timer.minutes)
+  end
+
   def accept!(answer_ids)
-    if Time.now.sec >= (self.created_at.sec + self.test.test_timer.seconds) and Time.now.min >= (self.created_at.min + self.test.test_timer.minutes) 
+    if time_is_out?
       self.current_question = nil
     else
       self.correct_questions += 1 if correct_answer?(answer_ids) 
