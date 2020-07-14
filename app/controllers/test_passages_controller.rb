@@ -3,18 +3,12 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show result update gist]
 
-  def show
-    if Time.now.sec >= @test_passage.created_at.sec + @test_passage.test.test_timer.seconds
-      redirect_to result_test_passage_path(@test_passage)
-    end 
-  end
+  def show;  end
 
   def result; end
 
   def update
     @test_passage.accept!(params[:answer_ids])
-
-
     if @test_passage.completed?
       if @test_passage.successful?
         @test_passage.success = true

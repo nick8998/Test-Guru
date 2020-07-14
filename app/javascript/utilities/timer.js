@@ -31,7 +31,8 @@ function clock(control){
 				minutes = 0;
 				seconds = 0;
 				hours = 0;
-				location.reload()
+				let form = document.forms[0];
+				form.submit();
 			} 			
 		}
 		else {

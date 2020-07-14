@@ -12,8 +12,13 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct_answer?(answer_ids)
-    save!
+    if Time.now.sec >= (self.created_at.sec + self.test.test_timer.seconds) and Time.now.min >= (self.created_at.min + self.test.test_timer.minutes) 
+      self.current_question = nil
+    else
+      self.correct_questions += 1 if correct_answer?(answer_ids) 
+      save!
+    end 
+
   end
 
   def result_procent
@@ -29,7 +34,9 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    self.correct_questions/self.test.questions.count*100 >= 85
+    unless self.correct_questions.nil?
+      self.correct_questions/self.test.questions.count*100 >= 85
+    end
   end
   
   private
