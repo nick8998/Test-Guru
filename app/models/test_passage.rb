@@ -11,8 +11,16 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def time_is_out?
+    Time.now >= self.created_at + self.test.test_timer.hours + self.test.test_timer.minutes + self.test.test_timer.seconds
+  end
+
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct_answer?(answer_ids)
+    if time_is_out?
+      self.current_question = nil
+    else
+      self.correct_questions += 1 if correct_answer?(answer_ids) 
+    end 
     save!
   end
 
@@ -29,7 +37,9 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    self.correct_questions/self.test.questions.count*100 >= 85
+    unless self.correct_questions.nil?
+      self.correct_questions/self.test.questions.count*100 >= 85
+    end
   end
   
   private
@@ -48,8 +58,10 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    if self.current_question.nil?
+    if self.new_record? 
       test.questions.first if test.present?
+    elsif self.current_question.nil?
+      nil
     else
       test.questions.order(:id).where('id > ?', current_question.id).first
     end

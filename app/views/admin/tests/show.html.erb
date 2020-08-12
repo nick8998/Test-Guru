@@ -8,6 +8,10 @@
   <%= @test.level %>
 </p>
 <p>
+  <strong>Time:</strong>
+  <%= @test.test_timer.hours %> : <%= @test.test_timer.minutes %> : <%= @test.test_timer.seconds %> 
+</p>
+<p>
 <%= link_to 'New question', new_admin_test_question_path(params[:id])%> 
 </p><br>
 <table>
